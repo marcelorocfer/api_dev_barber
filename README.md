@@ -3,7 +3,7 @@ Configurações Iniciais:
 
 - Inserir as credenciais do seu banco de dados no arquivo .env
 - Gerar chave secreta do JWT com o comando: [php artisan jwt:secret](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/)
-- Inserir no arquivo .env a especificação de duração de tempo do JWT com a seguinte constante: JWT_TTL=null
+- Inserir no arquivo .env a duração do tempo de expiração do token JWT com a seguinte constante: JWT_TTL=null
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
