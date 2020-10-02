@@ -14,10 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});*/
+});
 
 Route::get('/ping', function() {
     return ['pong' => true];
 });
+*/
+
+Route::post('/auth/login', 'AuthController@login');
+Route::post('/auth/logout', 'AuthController@logout');
+Route::post('/auth/refresh', 'AuthController@refresh');
+Route::post('/user', 'AuthController@create');
+
+Route::get('/user', 'UserController@read');
+Route::put('/user', 'UserController@update');
+Route::get('/user/favorites', 'UserController@getFavorites');
+Route::post('/user/favorite', 'UserController@addFavorite');
+Route::get('/user/appointments', 'UserController@getAppointments');
+
+Route::get('/barbers', 'BarberController@list');
+Route::get('/barber/{id}', 'BarberController@one');
+Route::get('/barber/{id}/appointment', 'BarberController@setAppointment');
+Route::get('/search', 'BarberController@search');
