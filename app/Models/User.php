@@ -12,6 +12,8 @@ class User extends Authenticatable implements JWTSubject
 
     protected $hidden = ['password'];
 
+    public $timestamps = false;
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
