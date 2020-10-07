@@ -20,7 +20,24 @@ class BarberController extends Controller
         $this->loggedUser = auth()->user();
     }
 
-    public function random()
+    public function list(Request $request)
+    {
+        $array = ['error' => ''];
+
+        $barbers = Barber::all();
+
+        foreach($barbers as $bkey => $bvalue) {
+            $barbers[$bkey]['avatar'] = url('media/avatars/'.$barbers[$bkey]['avatar']);
+        }
+
+        $array['data'] = $barbers;
+        $array['loc'] = 'São Paulo';
+
+        return $array;
+    }
+
+    /*
+     * public function random()
     {
         $array = ['error'=>''];
         for($q=0; $q<15; $q++) {
@@ -83,4 +100,5 @@ class BarberController extends Controller
         }
         return $array;
     }
+    */
 }
