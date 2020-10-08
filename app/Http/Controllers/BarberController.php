@@ -42,6 +42,11 @@ class BarberController extends Controller
         $lat = $request->input('lat');
         $lng = $request->input('lng');
         $city = $request->input('city');
+        $offset = $request->input('offset');
+
+        if(!$offset) {
+            $offset = 0;
+        }
 
         if(!empty($city)) {
             $res = $this->searchGeo($city);
@@ -67,6 +72,8 @@ class BarberController extends Controller
             POW(69.1 * (' . $lng . ' - longitude) * COS(latitude / 57.3), 2)) AS distance'))
             ->havingRaw('distance < ?', [10])
             ->orderBy('distance', 'ASC')
+            ->offset($offset)
+            ->limit(5)
             ->get();
 
         foreach($barbers as $bkey => $bvalue) {
