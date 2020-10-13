@@ -197,9 +197,9 @@ class BarberController extends Controller
         $day = intval($request->input('day'));
         $hour = intval($request->input('hour'));
 
-        $month = ($month > 10) ? '0'.$month : $month;
-        $day = ($day > 10) ? '0'.$day : $day;
-        $hour = ($hour > 10) ? '0'.$hour : $hour;
+        $month = ($month < 10) ? '0'.$month : $month;
+        $day = ($day < 10) ? '0'.$day : $day;
+        $hour = ($hour < 10) ? '0'.$hour : $hour;
 
         // 1. Verificar se o serviço do barbeiro existe.
         $barber_service = BarberService::select()
@@ -210,7 +210,7 @@ class BarberController extends Controller
         if($barber_service) {
 
             // 2. Verificar se a data é real.
-            $apDate = $year.' - '.$month.' - '.$day.' '.$hour.':00:00';
+            $apDate = $year.'-'.$month.'-'.$day.' '.$hour.':00:00';
             if(strtotime($apDate) > 0) {
 
                 // 3. Verificar se o barbeiro já possui agendamento nesse dia/hora.
@@ -244,7 +244,7 @@ class BarberController extends Controller
                             $newApp->save();
 
                         } else {
-                            $array['error'] = 'Não atende nesse hora.';
+                            $array['error'] = 'Não atende nessa hora.';
                         }
 
                     } else {
