@@ -41,5 +41,5 @@ Route::get('/user/appointments', 'UserController@getAppointments');
 
 Route::get('/barbers', 'BarberController@list');
 Route::get('/barber/{id}', 'BarberController@one');
-Route::get('/barber/{id}/appointment', 'BarberController@setAppointment');
+Route::post('/barber/{id}/appointment', 'BarberController@setAppointment');
 Route::get('/search', 'BarberController@search');
