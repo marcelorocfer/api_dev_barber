@@ -36,7 +36,7 @@ Route::post('/user', 'AuthController@create');
 Route::get('/user', 'UserController@read');
 Route::put('/user', 'UserController@update');
 Route::get('/user/favorites', 'UserController@getFavorites');
-Route::post('/user/favorite', 'UserController@addFavorite');
+Route::post('/user/favorite', 'UserController@toggleFavorite');
 Route::get('/user/appointments', 'UserController@getAppointments');
 
 Route::get('/barbers', 'BarberController@list');
